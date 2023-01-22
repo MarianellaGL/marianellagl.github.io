@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/marianellagl.github.io/static/css/main.e7bd7138.css",
-    "main.js": "/marianellagl.github.io/static/js/main.caec4bbc.js",
-    "static/js/787.5145eafd.chunk.js": "/marianellagl.github.io/static/js/787.5145eafd.chunk.js",
-    "static/media/marianella.jpeg": "/marianellagl.github.io/static/media/marianella.4876746b4cdd6d00972b.jpeg",
-    "index.html": "/marianellagl.github.io/index.html",
-    "main.e7bd7138.css.map": "/marianellagl.github.io/static/css/main.e7bd7138.css.map",
-    "main.caec4bbc.js.map": "/marianellagl.github.io/static/js/main.caec4bbc.js.map",
-    "787.5145eafd.chunk.js.map": "/marianellagl.github.io/static/js/787.5145eafd.chunk.js.map"
+    "main.css": "/static/css/main.e7bd7138.css",
+    "main.js": "/static/js/main.f9a1e0f9.js",
+    "static/js/787.5145eafd.chunk.js": "/static/js/787.5145eafd.chunk.js",
+    "static/media/marianella.jpeg": "/static/media/marianella.4876746b4cdd6d00972b.jpeg",
+    "index.html": "/index.html",
+    "main.e7bd7138.css.map": "/static/css/main.e7bd7138.css.map",
+    "main.f9a1e0f9.js.map": "/static/js/main.f9a1e0f9.js.map",
+    "787.5145eafd.chunk.js.map": "/static/js/787.5145eafd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e7bd7138.css",
-    "static/js/main.caec4bbc.js"
+    "static/js/main.f9a1e0f9.js"
   ]
 }
