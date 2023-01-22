@@ -2,7 +2,7 @@ import marianella from '../marianella.jpeg';
 const About = () => {
     return ( <>
     <div className="container mx-auto justify-self-center">
-         <h1 className='mr-[23px] ml-[118px] mb-[23px]'>Acerca de mí</h1>
+         <h1 className='mr-[23px] ml-[118px] mb-[23px]'>¡Hola!</h1>
         <div className="grid grid-rows-3 grid-flow-col gap-4">
          
             <div className= 'row-span-3'>
