@@ -1,11 +1,18 @@
-import { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useOctokitFetch from "../hooks/useOctokitFetch";
+
+const baseURL = process.env.REACT_APP_API_URL_REPOS
+const auth = process.env.REACT_APP_AUTH;
+const userName = process.env.REACT_APP_USERNAME;
 
 const Repositories = () => {
-    /** https://jawblet.medium.com/use-the-github-api-to-display-code-in-a-react-app-51f1aebb5a4 cambiar esta api por el servicio rest que es más estable*/
-    const repos = useFetch(`https://shawandpartners-api-backend.onrender.com/api/users/MarianellaGL/repos`, null);
 
-    if (!repos) {
+    const { data, isLoading, error } = useOctokitFetch(`GET ${baseURL}`, {
+        username: userName,
+        auth: auth,
+    });
+    console.log(data)
+
+    if (isLoading) {
         return <><div role="status">
             <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -16,36 +23,42 @@ const Repositories = () => {
         </>
     }
 
+    if (error) {
+        return <h1>ERROR</h1>
+    }
+
 
     return (
         <>
+            <div className="flex justify-center h-screen my-6">
+                <div className="relative overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <th>Id</th>
+                            <th>Fullname</th>
+                            <th>URL</th>
+                        </thead>
+                        <tbody>
+                            {
+                                data ? data.map((repo, index) =>
+                                    <>
+                                        <tr>
+                                            <td key={index}>{repo.id}</td>
+                                            <td>{repo.full_name}</td>
+                                            <td><a href={repo.url} target="_blank" rel="noreferrer">{repo.url}</a></td>
+                                        </tr>
+                                    </>
+                                ) :
+                                    <h1> En estos momentos no se puede acceder a la api</h1>
+                            }
 
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <th>Id</th>
-                        <th>Fullname</th>
-                        <th>URL</th>
-                    </thead>
-                    <tbody>
-                        {
-                            repos ? repos.map((repo, index) =>
-                                <>
-                                    <tr>
-                                        <td key={index}>{repo.id}</td>
-                                        <td>{repo.full_name}</td>
-                                        <td><a href={repo.url} target="_blank" rel="noreferrer">{repo.url}</a></td>
-                                    </tr>
-                                </>
-                            ) :
-                                <h1> En estos momentos no se puede acceder a la api</h1>
-                        }
+                        </tbody>
 
-                    </tbody>
-
-                </table >
-            </div>
+                    </table >
+                </div>
+            </div >
         </>);
+
 }
 
 export default Repositories;
