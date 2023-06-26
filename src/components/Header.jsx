@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import About from "./About";
 
 const Header = () => {
     return (
         <>
-        <header>
+            <header>
                 <nav className="container flex justify-between px-4 py-8 mx-auto bg-white">
                     <div>
                         <h3 className="text-2xl font-medium text-blue-500">Marianella Gomez Luna</h3>
                     </div>
                     <div className="hidden space-x-8 lg:flex">
-                        <a href="#">About Me</a>
-                        <a href="#">Projects</a>
-                        <a href="#">My CV</a>
-                        <a href="#">Contact me!</a>
+                        <Link to="/about" element={<About />} >About Me</Link>
+                        <a href="/projects">Projects</a>
+                        <a href="/cv">My CV</a>
+                        <a href="/contactform">Contact me!</a>
                     </div>
                     <div class="flex lg:hidden">
                         <svg

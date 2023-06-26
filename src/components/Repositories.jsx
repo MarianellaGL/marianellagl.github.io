@@ -1,8 +1,9 @@
+import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
 const Repositories = () => {
+    /** https://jawblet.medium.com/use-the-github-api-to-display-code-in-a-react-app-51f1aebb5a4 cambiar esta api por el servicio rest que es más estable*/
     const repos = useFetch(`https://shawandpartners-api-backend.onrender.com/api/users/MarianellaGL/repos`, null);
-    console.log(repos)
 
     if (!repos) {
         return <><div role="status">
@@ -28,15 +29,16 @@ const Repositories = () => {
                     </thead>
                     <tbody>
                         {
-                            repos.map((repo, index) =>
+                            repos ? repos.map((repo, index) =>
                                 <>
                                     <tr>
                                         <td key={index}>{repo.id}</td>
                                         <td>{repo.full_name}</td>
-                                        <td><a href={repo.url}  target="_blank" rel="noreferrer">{repo.url}</a></td>
+                                        <td><a href={repo.url} target="_blank" rel="noreferrer">{repo.url}</a></td>
                                     </tr>
                                 </>
-                            )
+                            ) :
+                                <h1> En estos momentos no se puede acceder a la api</h1>
                         }
 
                     </tbody>
